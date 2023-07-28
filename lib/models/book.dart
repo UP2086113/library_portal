@@ -13,6 +13,9 @@ class Book {
   final String bio;
   final String imageUrl;
   final DateTime publishedDate;
+  final DateTime? issueDate;
+  final DateTime? returnedOn;
+  final bool isBookIssued;
   Book({
     required this.id,
     required this.authorId,
@@ -22,7 +25,9 @@ class Book {
     required this.bio,
     required this.imageUrl,
     required this.publishedDate,
-  });
+    this.issueDate,
+    this.returnedOn,
+  }) : isBookIssued = issueDate != null;
 
   Book copyWith({
     int? id,
@@ -33,6 +38,8 @@ class Book {
     String? bio,
     String? imageUrl,
     DateTime? publishedDate,
+    DateTime? issueDate,
+    DateTime? returnedOn,
   }) {
     return Book(
       id: id ?? this.id,
@@ -43,6 +50,8 @@ class Book {
       bio: bio ?? this.bio,
       imageUrl: imageUrl ?? this.imageUrl,
       publishedDate: publishedDate ?? this.publishedDate,
+      issueDate: issueDate ?? this.issueDate,
+      returnedOn: returnedOn ?? this.returnedOn,
     );
   }
 
@@ -56,6 +65,8 @@ class Book {
       'bio': bio,
       'imageUrl': imageUrl,
       'publishedDate': publishedDate.millisecondsSinceEpoch,
+      'issueDate': issueDate?.millisecondsSinceEpoch,
+      'returnedOn': returnedOn?.millisecondsSinceEpoch,
     };
   }
 
@@ -70,6 +81,12 @@ class Book {
       imageUrl: map['imageUrl'] as String,
       publishedDate:
           DateTime.fromMillisecondsSinceEpoch(map['publishedDate'] as int),
+      issueDate: map['issueDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['issueDate'] as int)
+          : null,
+      returnedOn: map['returnedOn'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['returnedOn'] as int)
+          : null,
     );
   }
 
@@ -80,7 +97,7 @@ class Book {
 
   @override
   String toString() {
-    return 'Book(id: $id, authorId: $authorId, genreId: $genreId, name: $name, rating: $rating, bio: $bio, imageUrl: $imageUrl, publishedDate: $publishedDate)';
+    return 'Book(id: $id, authorId: $authorId, genreId: $genreId, name: $name, rating: $rating, bio: $bio, imageUrl: $imageUrl, publishedDate: $publishedDate, issueDate: $issueDate, returnedOn: $returnedOn, isBookIssued: $isBookIssued)';
   }
 
   @override
@@ -94,7 +111,9 @@ class Book {
         other.rating == rating &&
         other.bio == bio &&
         other.imageUrl == imageUrl &&
-        other.publishedDate == publishedDate;
+        other.publishedDate == publishedDate &&
+        other.issueDate == issueDate &&
+        other.returnedOn == returnedOn;
   }
 
   @override
@@ -106,6 +125,8 @@ class Book {
         rating.hashCode ^
         bio.hashCode ^
         imageUrl.hashCode ^
-        publishedDate.hashCode;
+        publishedDate.hashCode ^
+        issueDate.hashCode ^
+        returnedOn.hashCode;
   }
 }

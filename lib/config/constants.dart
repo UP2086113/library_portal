@@ -1,8 +1,10 @@
-import '../models/author.dart';
-import '../models/author_review.dart';
-import '../models/book.dart';
-import '../models/book_review.dart';
-import '../models/genre.dart';
+import 'package:logger/logger.dart';
+
+import '../../models/author.dart';
+import '../../models/author_review.dart';
+import '../../models/book.dart';
+import '../../models/book_review.dart';
+import '../../models/genre.dart';
 
 List<Book> bookList = [
   Book(
@@ -61,7 +63,7 @@ List<Book> bookList = [
     bio:
         "It follows Harry Potter, a wizard in his fourth year at Hogwarts School of Witchcraft and Wizardry, and the mystery surrounding the entry of Harry's name into the Triwizard Tournament, in which he is forced to compete.",
     imageUrl:
-        "https://embed.cdn.pais.scholastic.com/v1/channels/sso/products/identifiers/isbn/9780545582957/primary/renditions/700?useMissingImage=true",
+        "https://d5i0fhmkm8zzl.cloudfront.net/9780545582957_harry_potter_and_the_goblet_of_fire_0_0.jpg",
     publishedDate: DateTime(2000, 7, 8),
     authorId: 62,
     genreId: [2, 22],
@@ -114,7 +116,134 @@ List<Book> bookList = [
     publishedDate: DateTime(1978, 10, 3),
     authorId: 63,
     genreId: [2, 3, 22],
-  )
+  ),
+
+  Book(
+    id: 1,
+    authorId: 1,
+    genreId: [4, 5],
+    name: "The Adventures of Sherlock Holmes",
+    rating: 4,
+    bio:
+        "A collection of 12 stories about the famous detective Sherlock Holmes and his partner Dr. Watson, who solve a variety of mysteries, including murders, thefts, and missing persons cases. The stories are set in late 19th-century London and feature Holmes's keen observational skills and deductive reasoning.",
+    imageUrl:
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1665689329-41fqfwTqojL._SL500_.jpg",
+    publishedDate: DateTime(1892),
+    issueDate: DateTime(2023),
+    returnedOn: null,
+  ),
+  Book(
+    id: 2,
+    authorId: 2,
+    genreId: [6, 7],
+    name: "Pride and Prejudice",
+    rating: 4,
+    bio:
+        "A novel of manners that follows the lives of Elizabeth Bennet and her family as they navigate the social conventions of 19th-century England. The story is set in the fictional town of Meryton, Hertfordshire, and follows the Bennet family as they try to find suitable husbands for their five daughters.",
+    imageUrl:
+        "https://royalreadingroom.uk/wp-content/uploads/2022/04/Jane-Austen-Pride-And-Prejudice-Book-Cover.jpg",
+    publishedDate: DateTime(1813),
+    issueDate: DateTime.now(),
+    returnedOn: null,
+  ),
+  Book(
+    id: 3,
+    authorId: 3,
+    genreId: [23, 6],
+    name: "The Great Gatsby",
+    rating: 4,
+    bio:
+        "A novel about the American Dream and the pursuit of wealth and status, set in the Jazz Age of the 1920s. The story follows Jay Gatsby, a wealthy man who throws lavish parties in his mansion in West Egg, Long Island. Gatsby is obsessed with Daisy Buchanan, a woman he met and fell in love with five years earlier.",
+    imageUrl:
+        "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982146702/the-great-gatsby-9781982146702_hr.jpg",
+    publishedDate: DateTime(1925),
+    issueDate: DateTime.now(),
+    returnedOn: null,
+  ),
+  Book(
+    id: 4,
+    authorId: 4,
+    genreId: [8, 22],
+    name: "To Kill a Mockingbird",
+    rating: 4,
+    bio:
+        "A novel about a young girl named Scout who learns about racism and courage as she witnesses her father defend a black man accused of rape in the Jim Crow South. The story is set in the fictional town of Maycomb, Alabama, in the 1930s.",
+    imageUrl:
+        "https://cdn.britannica.com/21/182021-050-666DB6B1/book-cover-To-Kill-a-Mockingbird-many-1961.jpg",
+    publishedDate: DateTime(1960),
+    issueDate: null,
+    returnedOn: null,
+  ),
+
+  Book(
+    id: 5,
+    authorId: 5,
+    genreId: [2, 4, 5],
+    name: "The Lord of the Rings",
+    rating: 5,
+    bio:
+        "A fantasy novel about a hobbit named Frodo Baggins who sets out on a quest to destroy the One Ring, an evil artifact that threatens to destroy Middle-earth. The story is set in the fictional world of Middle-earth, and follows Frodo and his companions as they journey to Mount Doom, the only place where the Ring can be destroyed.",
+    imageUrl:
+        "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1566425108l/33.jpg",
+    publishedDate: DateTime(1954),
+    issueDate: DateTime(2023),
+    returnedOn: null,
+  ),
+  Book(
+    id: 6,
+    authorId: 6,
+    genreId: [4, 8],
+    name: "The Hitchhiker's Guide to the Galaxy",
+    rating: 4,
+    bio:
+        "A comedy science fiction series about a hapless Englishman named Arthur Dent who escapes Earth's destruction and travels through space with his friend Ford Prefect, who is actually an alien researcher who was stranded on Earth for fifteen years while gathering information for the titular Hitchhiker's Guide to the Galaxy.",
+    imageUrl:
+        "https://s3.amazonaws.com/marquee-test-akiaisur2rgicbmpehea/li9MaBLHQxC2tfSY0tMJ_hitch1.jpg",
+    publishedDate: DateTime(1979),
+    issueDate: null,
+    returnedOn: null,
+  ),
+  Book(
+    id: 7,
+    authorId: 7,
+    genreId: [4, 5],
+    name: "The Da Vinci Code",
+    rating: 4,
+    bio:
+        "A thriller novel about a murder that takes place in the Louvre Museum and a conspiracy involving the Holy Grail. The story follows Robert Langdon, a professor of symbology at Harvard University, as he tries to solve the mystery of the murder and uncover the truth about the Holy Grail.",
+    imageUrl:
+        "https://www.booksplus.pk/wp-content/uploads/2019/05/the-da-vinci-code-dan-brown.jpg",
+    publishedDate: DateTime(2003),
+    issueDate: DateTime.now().subtract(const Duration(days: 8)),
+    returnedOn: null,
+  ),
+  Book(
+    id: 8,
+    authorId: 8,
+    genreId: [2, 3, 8],
+    name: "The Hunger Games",
+    rating: 4,
+    bio:
+        "A dystopian novel about a young girl named Katniss Everdeen who volunteers to take her younger sister's place in a deadly competition called the Hunger Games. The story is set in a dystopian future where children are forced to fight to the death in an annual televised event.",
+    imageUrl:
+        "https://www.thebookshop.es/productimages/1200/the-hunger-games---suzanne-collins_269889.jpg",
+    publishedDate: DateTime(2008),
+    issueDate: DateTime.now().subtract(const Duration(days: 8)),
+    returnedOn: null,
+  ),
+  Book(
+    id: 9,
+    authorId: 64,
+    genreId: [2, 6, 9],
+    name: "Harry Potter and the Sorcerer's Stone",
+    rating: 4,
+    bio:
+        "A fantasy novel about a young boy named Harry Potter who discovers that he is a wizard and attends Hogwarts School of Witchcraft and Wizardry. The story follows Harry as he learns about magic, makes new friends, and faces off against the evil Lord Voldemort. The book is the first in the Harry Potter series, which has become one of the most popular and successful book series of all time.",
+    imageUrl: "https://m.media-amazon.com/images/I/51Ppi-8kISL.jpg",
+    publishedDate: DateTime(1997),
+    issueDate: DateTime(2023),
+    returnedOn: DateTime(2023, 6, 10),
+  ),
 ];
 
 List<BookReview> bookReviews = [
@@ -195,6 +324,88 @@ List<BookReview> bookReviews = [
 
 List<Author> authorsList = [
   Author(
+      id: 1,
+      age: 75,
+      rating: 4,
+      firstName: "Arthur",
+      lastName: "Conan Doyle",
+      country: "United Kingdom",
+      imageUrl:
+          "https://www.arthur-conan-doyle.com/images/thumb/1/11/1901-arthur-conan-doyle-election-standing-for-parliament-drawing.jpg/290px-1901-arthur-conan-doyle-election-standing-for-parliament-drawing.jpg"),
+  Author(
+      id: 2,
+      age: 93,
+      rating: 4,
+      firstName: "Jane",
+      lastName: "Austen",
+      country: "United Kingdom",
+      imageUrl:
+          "https://www.bookedforlife.in/wp-content/uploads/2017/12/jane-austen.jpg"),
+  Author(
+    id: 62,
+    firstName: "Joanne",
+    lastName: "Rowling",
+    age: 73,
+    country: "United Kingdom",
+    rating: 5,
+    imageUrl:
+        "https://jkrowling.com/wp-content/uploads/2016/12/JKROWLINGPR_S01_00057_V4.jpg",
+  ),
+  Author(
+      id: 3,
+      age: 46,
+      rating: 4,
+      firstName: "Francis Scott",
+      lastName: "Fitzgerald",
+      country: "United States",
+      imageUrl:
+          "https://www.onthisday.com/images/people/f-scott-fitzgerald.jpg"),
+  Author(
+      id: 4,
+      age: 90,
+      rating: 4,
+      firstName: "Harper",
+      lastName: "Lee",
+      country: "United States",
+      imageUrl:
+          "https://www.thefamouspeople.com/profiles/images/harper-lee-5.jpg"),
+  Author(
+      id: 5,
+      age: 102,
+      rating: 5,
+      firstName: "J.R.R.",
+      lastName: "Tolkien",
+      country: "United Kingdom",
+      imageUrl:
+          "https://www.onthisday.com/images/people/f-scott-fitzgerald.jpg"),
+  Author(
+      id: 6,
+      age: 61,
+      rating: 4,
+      firstName: "Douglas",
+      lastName: "Adams",
+      country: "England",
+      imageUrl:
+          "https://ffrf.org/media/k2/items/cache/55dab641276be98081e9404b57d3914a_S.jpg"),
+  Author(
+      id: 7,
+      age: 59,
+      rating: 4,
+      firstName: "Dan",
+      lastName: "Brown",
+      country: "United States",
+      imageUrl:
+          "https://danbrown.com/wp-content/themes/danbrown/images/db/slideshow/author/db.courter.02.jpg"),
+  Author(
+      id: 8,
+      age: 49,
+      rating: 4,
+      firstName: "Suzanne",
+      lastName: "Collins",
+      country: "United States",
+      imageUrl:
+          "https://hips.hearstapps.com/hmg-prod/images/suzanne-collins.jpg"),
+  Author(
     id: 64,
     firstName: "Stephen",
     lastName: "King",
@@ -213,17 +424,6 @@ List<Author> authorsList = [
     imageUrl:
         "https://i.pinimg.com/originals/c7/23/60/c72360ea2d9d658cdbcf6e2ec3ad0d4a.jpg",
   ),
-  // Add more authors here...
-  Author(
-    id: 62,
-    firstName: "Joanne",
-    lastName: "Rowling",
-    age: 55,
-    country: "GBR",
-    rating: 5,
-    imageUrl:
-        "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE1ODA0OTcxMzcxNTYyNTA5/jk-rowling-40998-1-402.jpg",
-  ),
   Author(
     id: 63,
     firstName: "Dale",
@@ -234,16 +434,21 @@ List<Author> authorsList = [
     imageUrl:
         "https://upload.wikimedia.org/wikipedia/en/0/0c/Dale_Carnegie.jpg",
   ),
-  // Add more authors here...
 ];
 
-List<Genre> genres = [
+List<Genre> genreList = [
   Genre(id: 2, name: "Fantasy"),
   Genre(id: 41, name: "Non-Fiction"),
   Genre(id: 23, name: "Drama"),
   Genre(id: 3, name: "Horror"),
   Genre(id: 1, name: "Entrepreneurship"),
   Genre(id: 22, name: "Fiction"),
+  Genre(id: 4, name: "Mystery"),
+  Genre(id: 5, name: "Detective Fiction"),
+  Genre(id: 6, name: "Romance"),
+  Genre(id: 7, name: "Comedy of Manners"),
+  Genre(id: 8, name: "Coming-of-Age"),
+  Genre(id: 9, name: "Legal Fiction"),
 ];
 
 List<AuthorReview> authorReviews = [
@@ -291,3 +496,5 @@ List<AuthorReview> authorReviews = [
   ),
   // Add more author reviews here...
 ];
+
+Logger log = Logger();

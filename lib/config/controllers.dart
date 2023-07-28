@@ -10,9 +10,11 @@
 // import '../controllers/profile_controller.dart';
 // import '../controllers/pusher_controller.dart';
 
-import 'package:library_portal/providers/bottom_nav_bar_provider.dart';
+import 'package:library_portal/controllers/bottom_nav_bar_controller.dart';
+import 'package:library_portal/controllers/publishes_controller.dart';
 
 BottomNavBarController navBarController = BottomNavBarController.instance;
+PublishesController publisherController = PublishesController.instance;
 // HomeController homeController = HomeController.instance;
 
 // ProfileController profileController = ProfileController.instance;
